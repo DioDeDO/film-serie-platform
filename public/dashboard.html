@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Utente</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard Utente</h1>
+        <p>Benvenuto, <span id="username"></span>!</p>
+        <button id="logoutButton">Logout</button>
+
+        <h2>Le Tue Liste</h2>
+        <div id="lists"></div>
+        <h3>Crea Nuova Lista</h3>
+        <form id="createListForm">
+            <label for="listName">Nome della Lista:</label>
+            <input type="text" id="listName" name="listName" required>
+
+            <label for="visibility">Visibilità:</label>
+            <select id="visibility" name="visibility">
+                <option value="privata">Privata</option>
+                <option value="pubblica">Pubblica</option>
+            </select>
+
+            <button type="submit">Crea Lista</button>
+        </form>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
