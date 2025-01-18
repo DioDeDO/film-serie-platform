@@ -122,6 +122,34 @@ function updateList(id, nome_corrente, visibilita_corrente) {
     }
 }
 
+// Funzione per caricare i suggerimenti
+async function loadSuggestions() {
+    try {
+        const response = await fetch("../api/suggestions/suggest.php");
+        const suggestions = await response.json();
+
+        const suggestionsContainer = document.getElementById("suggestions");
+        if (response.ok) {
+            suggestionsContainer.innerHTML = ""; // Svuota il contenitore
+
+            suggestions.forEach((suggestion) => {
+                const suggestionItem = document.createElement("div");
+                suggestionItem.classList.add("suggestion-item");
+                suggestionItem.innerHTML = `
+                    <h4>${suggestion.titolo} (${suggestion.anno})</h4>
+                    <p>${suggestion.descrizione}</p>
+                    <small>Genere: ${suggestion.genere}</small>
+                `;
+                suggestionsContainer.appendChild(suggestionItem);
+            });
+        } else {
+            suggestionsContainer.innerHTML = `<p>${suggestions.error || "Errore nel caricamento dei suggerimenti."}</p>`;
+        }
+    } catch (error) {
+        document.getElementById("suggestions").innerHTML = `<p>Errore nella comunicazione con il server.</p>`;
+    }
+}
+
 // Funzione per il logout
 logoutButton.addEventListener("click", async () => {
     try {
@@ -138,5 +166,6 @@ logoutButton.addEventListener("click", async () => {
     }
 });
 
-// Carica le liste all'avvio
+// Carica le liste e i suggerimenti all'avvio
 loadLists();
+loadSuggestions();
