@@ -13,6 +13,9 @@ try {
     // Creazione di una connessione PDO
     $pdo = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Test temporaneo
+    die("Connessione riuscita!"); // Rimuovi questa riga dopo il test
 } catch (PDOException $e) {
     // Gestione degli errori di connessione
     die("Errore di connessione: " . $e->getMessage());
