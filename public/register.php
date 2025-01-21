@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=<?= filemtime('css/style.css'); ?>">
 </head>
 <body>
     <div class="container">
@@ -21,9 +21,11 @@
 
             <button type="submit">Registrati</button>
         </form>
+
+        <!-- Elemento per mostrare messaggi dinamici -->
         <p id="feedback" style="text-align: center; color: red;"></p>
     </div>
 
-    <script src="js/register.js"></script> <!-- Collegamento al file JavaScript -->
+    <script src="js/register.js?v=<?= filemtime('js/register.js'); ?>"></script>
 </body>
 </html>
